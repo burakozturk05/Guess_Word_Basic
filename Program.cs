@@ -11,12 +11,13 @@ while (hak > 0)
 {
     string kelime = Console.ReadLine().Trim().ToLower();
     bool bosmu = string.IsNullOrEmpty(kelime);
-    if (bosmu || int.TryParse(kelime, out int _))
+    bool kelimeEle = kelimeler.Any(k => k.ToLower() == kelime);
+    if (bosmu || int.TryParse(kelime, out int _) || !kelimeEle)
     {
         Console.WriteLine("Lutfen Doğru bir karakter giriniz.");
         hak--;
     }
-    if (!(bosmu || int.TryParse(kelime, out int _)))
+    if (!(bosmu || int.TryParse(kelime, out int _) || !kelimeEle))
     {
         if (kelime == kelimeler[tahminEdilen].ToLower())
         {
